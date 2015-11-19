@@ -1,0 +1,33 @@
+.action-sheet-group {
+    padding-bottom: 10px;
+}
+
+.platform-android .action-sheet .action-sheet-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.facebook-icon {
+    color: #3A589B;
+}
+
+.twitter-icon {
+    color: #2DAAE2;
+}
+
+.whatsapp-icon {
+    color: #27A853;
+}
+
+/*GAME OVER*/
+.game-over {
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+.game-over-title {
+    width: 100%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
