@@ -1,0 +1,11 @@
+<ion-view title="Ranking">
+    <ion-content padding="true" class="has-header ranking">
+        <h3>Ranking</h3>
+        <ion-spinner ng-hide="hideSpinner" class="spinner-energized espiner"></ion-spinner>
+        <ion-list ng-show="hideSpinner">
+            <ion-item ng-repeat="rankingItem in rankings | orderBy: '-score'">
+                {{rankingItem.nick}} - {{rankingItem.score}} points
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

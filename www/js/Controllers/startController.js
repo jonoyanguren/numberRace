@@ -1,6 +1,7 @@
 (function () {
     angular
         .module('app')
-        .controller('startCtrl', function ($scope) {
+        .controller('startCtrl', function ($scope, $firebaseArray) {
+
         });
 })();

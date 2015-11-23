@@ -51,6 +51,12 @@ angular.module('app.routes', [])
                 url: '/tutorial',
                 templateUrl: 'templates/tutorial.html',
                 cache: false
+            })
+            .state('ranking', {
+                url: '/ranking',
+                templateUrl: 'templates/ranking.html',
+                controller: 'rankingCtrl',
+                cache: false
             });
 
         // if none of the above states are matched, use this as the fallback

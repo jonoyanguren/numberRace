@@ -1,8 +1,10 @@
 (function () {
     angular.module('app')
-        .controller('gameOverCtrl', function ($scope, $stateParams, $ionicActionSheet, $state) {
+        .controller('gameOverCtrl', function ($scope, $stateParams, $ionicActionSheet, $state, $ionicPopup) {
             $scope.points = $stateParams.points;
             $scope.time = $stateParams.time;
+            $scope.popup = {};
+            $scope.rankingUploaded = false;
 
             var levelNames = ["FingerZombie", "FingerBaby", "FingerJumper", "FingerDance", "FingerBreaker"];
 
@@ -70,6 +72,59 @@
                 //}, 4000);
 
             };
+
+            $scope.showPopup = function () {
+                $scope.data = {}
+
+                // An elaborate, custom popup
+                var myPopup = $ionicPopup.show({
+                    template: '' +
+                    '<input type="text" ng-model="data.nick" placeholder="nick">' +
+                    '<input type="email" ng-model="data.email" placeholder="email">',
+                    title: 'Enter your nick and mail',
+                    subTitle: 'we will not spam you, promise',
+                    scope: $scope,
+                    buttons: [
+                        {text: 'Cancel'},
+                        {
+                            text: '<b>Send</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+                                if (!$scope.data.nick || !$scope.data.email) {
+                                    //don't allow the user to close unless he enters wifi password
+                                    e.preventDefault();
+                                } else {
+                                    var userObject = {
+                                        nick: $scope.data.nick,
+                                        email: $scope.data.email,
+                                        score: $scope.points
+                                    }
+                                    return userObject;
+                                }
+                            }
+                        }
+                    ]
+                });
+                myPopup.then(function (res) {
+                    addUserToFirebase(res);
+                });
+            };
+
+            var addUserToFirebase = function (user) {
+                var url = 'https://fingerbreaker.firebaseio.com/';
+                url += $scope.time + 'ranking';
+                var ranking = new Firebase(url);
+
+                ranking.push(user, function(error) {
+                    if(error){
+                        alert("something happened");
+                    } else {
+                        alert("Data stored");
+                        $scope.rankingUploaded = true;
+                    }
+                });
+            }
         });
-})();
+})
+();
 

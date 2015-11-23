@@ -10,6 +10,13 @@ body {
     height: 100%;
 }
 
+/*RANKING*/
+.espiner {
+    position: absolute;
+    left: 47%;
+    margin-top: 50%;
+}
+
 /*RACE*/
 .moving-div {
     width: 100px;
