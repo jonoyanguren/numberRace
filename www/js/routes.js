@@ -10,8 +10,8 @@ angular.module('app.routes', [])
             .state('start', {
                 url: '/start',
                 templateUrl: 'templates/start.html',
-                controller: 'startCtrl'
-
+                controller: 'startCtrl',
+                cache: false
             })
             .state('loading', {
                 url: '/loading',
@@ -19,12 +19,14 @@ angular.module('app.routes', [])
                 controller: 'loadingCtrl',
                 params: {
                     time: "20"
-                }
+                },
+                cache: false
             })
             .state('options', {
                 url: '/options',
                 templateUrl: 'templates/options.html',
-                controller: 'optionsCtrl'
+                controller: 'optionsCtrl',
+                cache: false
             })
             .state('race', {
                 url: '/race',
@@ -32,15 +34,23 @@ angular.module('app.routes', [])
                 controller: 'raceCtrl',
                 params: {
                     time: "20"
-                }
+                },
+                cache: false
             })
             .state('gameOver', {
                 url: '/gameOver',
                 templateUrl: 'templates/gameOver.html',
                 controller: 'gameOverCtrl',
                 params: {
-                    points: "0"
-                }
+                    points: "0",
+                    time: "0"
+                },
+                cache: false
+            })
+            .state('tutorial', {
+                url: '/tutorial',
+                templateUrl: 'templates/tutorial.html',
+                cache: false
             });
 
         // if none of the above states are matched, use this as the fallback

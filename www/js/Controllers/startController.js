@@ -1,5 +1,6 @@
 (function () {
-    angular.module('app')
+    angular
+        .module('app')
         .controller('startCtrl', function ($scope) {
         });
 })();

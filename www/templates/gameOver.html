@@ -1,11 +1,21 @@
 <ion-view title="Loading">
     <ion-content padding="true" class="has-header game-over">
         <img class="game-over-title" src="img/gameOver.png"/>
-        <div>
+
+        <div class="info-points">
             <p>{{points}} points!</p>
+            <p>You are a {{rank}}!!!</p>
         </div>
-        <button class="button button-large button-royal" ng-click="showActionSheet()">
-            <i class="icon ion-android-share-alt"></i> Share
-        </button>
+        <div class="buttons">
+            <button class="button button-balanced" ng-click="retry()">
+                <i class="icon ion-planet"></i><span>Retry</span>
+            </button>
+            <button class="button button-energized" ng-disabled="true">
+                <i class="icon ion-upload"></i><span>Upload to the ranking</span>
+            </button>
+            <button class="button button-royal" ng-click="showActionSheet()">
+                <i class="icon ion-android-share-alt"></i><span>Share</span>
+            </button>
+        </div>
     </ion-content>
 </ion-view>

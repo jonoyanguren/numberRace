@@ -1,7 +1,28 @@
 (function () {
     angular.module('app')
-        .controller('gameOverCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout) {
+        .controller('gameOverCtrl', function ($scope, $stateParams, $ionicActionSheet, $state) {
             $scope.points = $stateParams.points;
+            $scope.time = $stateParams.time;
+
+            var levelNames = ["FingerZombie", "FingerBaby", "FingerJumper", "FingerDance", "FingerBreaker"];
+
+            if ($scope.time == 10) {
+                if ($scope.points >= 0 && $scope.points <= 49)
+                    $scope.rank = levelNames[0];
+                if ($scope.points >= 50 && $scope.points <= 99)
+                    $scope.rank = levelNames[1];
+                if ($scope.points >= 100 && $scope.points <= 119)
+                    $scope.rank = levelNames[2];
+                if ($scope.points >= 120 && $scope.points <= 149)
+                    $scope.rank = levelNames[3];
+                if ($scope.points >= 150)
+                    $scope.rank = levelNames[4];
+            }
+
+            $scope.retry = function () {
+                $scope.points = 0;
+                $state.go('start');
+            }
 
             $scope.showActionSheet = function () {
                 // Show the action sheet
@@ -20,7 +41,7 @@
                         switch (index) {
                             case 0:
                                 console.log('share on facebook');
-                                window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, null /* url */, function () {
+                                window.plugins.socialsharing.shareViaFacebook('I have done a score of ' + $scope.points + ' in NumberRace', null /* img */, null /* url */, function () {
                                     console.log('share ok')
                                 }, function (errormsg) {
                                     alert(errormsg)
@@ -28,11 +49,11 @@
                                 break;
                             case 1:
                                 console.log('share on twitter');
-                                window.plugins.socialsharing.shareViaTwitter('Message via Twitter');
+                                window.plugins.socialsharing.shareViaTwitter('I have done a score of ' + $scope.points + ' in NumberRace');
                                 break;
                             case 2:
                                 console.log('share on whatsapp');
-                                window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function () {
+                                window.plugins.socialsharing.shareViaWhatsApp('I have done a score of ' + $scope.points + ' in NumberRace', null /* img */, null /* url */, function () {
                                     console.log('share ok')
                                 }, function (errormsg) {
                                     alert(errormsg)

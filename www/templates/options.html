@@ -3,12 +3,11 @@
         <form class="list">
             <h3>Select the time</h3>
             <div class="spacer" style="width: 300px; height: 30px;"></div>
-            <ion-radio ng-model="time" value="60" name="Time options">1 min</ion-radio>
             <ion-radio ng-model="time" value="30" name="Time options">30 sec</ion-radio>
             <ion-radio ng-model="time" value="20" name="Time options">20 sec</ion-radio>
-            <ion-radio ng-model="time" value="1" name="Time options">10 sec</ion-radio>
+            <ion-radio ng-model="time" value="10" name="Time options">10 sec</ion-radio>
         </form>
         <div class="spacer" style="width: 300px; height: 30px;"></div>
-        <a ui-sref="loading({time: time})" ng-disabled="!time" class="button button-energized  button-large icon ion-alert button-full">Go!</a>
+        <a ui-sref="loading({time: time})" ng-disabled="!time" class="button button-energized  button-large icon ion-alert button-full"><span>Go!</span></a>
     </ion-content>
 </ion-view>

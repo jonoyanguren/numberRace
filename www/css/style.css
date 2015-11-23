@@ -1,3 +1,75 @@
+
+body {
+}
+
+.icon span {
+    margin-left: 20px;
+}
+
+.scroll-padding {
+    height: 100%;
+}
+
+/*RACE*/
+.moving-div {
+    width: 100px;
+    position: absolute;
+
+    /* Add vendor prefixes as needed */
+    transition: top 800ms linear, left 800ms linear;
+}
+
+/*LOADING*/
+.loading {
+    text-align: center;
+    margin-top: 35%;
+}
+
+.loading h3 {
+    margin-bottom: 20px;
+}
+
+.loading div {
+    font-size: 15px;
+}
+
+/*RACE*/
+.race {
+    text-align: center;
+}
+
+.count {
+    margin-top: 50%;
+}
+
+/*GAME OVER*/
+.game-over {
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+.game-over-title {
+    width: 100%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.info-points {
+    margin-bottom: 40%;
+    font-size: 20px;
+}
+
+.buttons {
+    position: relative;
+    bottom: 0;
+}
+
+.game-over .button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .action-sheet-group {
     padding-bottom: 10px;
 }
@@ -19,15 +91,14 @@
     color: #27A853;
 }
 
-/*GAME OVER*/
-.game-over {
+/*TUTORIAL*/
+.tutorial {
     text-align: center;
-    background: black;
-    color: white;
 }
 
-.game-over-title {
-    width: 100%;
-    margin-top: 20%;
-    margin-bottom: 20%;
+.tutorial ol {
+    text-align: justify;
+    margin: auto;
+    width: 65%;
+    margin-top: 30px;
 }
