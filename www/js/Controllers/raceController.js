@@ -48,6 +48,6 @@
                 $scope.pos.left = Math.random() * 500 + "px";
             }
 
-            $interval($scope.newPos, 1000);
+            //$interval($scope.newPos, 1000);
         });
 })();

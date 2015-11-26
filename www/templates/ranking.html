@@ -1,9 +1,16 @@
 <ion-view title="Ranking">
+    <ion-nav-bar>
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
     <ion-content padding="true" class="has-header ranking">
-        <h3>Ranking</h3>
         <ion-spinner ng-hide="hideSpinner" class="spinner-energized espiner"></ion-spinner>
-        <ion-list ng-show="hideSpinner">
-            <ion-item ng-repeat="rankingItem in rankings | orderBy: '-score'">
+        <div class="no-content-message" ng-show="ranking.length == 0 && hideSpinner">
+            <img src="img/sad.png"/><br/>
+            <p>No one in the ranking</p>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="rankingItem in ranking | orderBy: '-score'">
                 {{rankingItem.nick}} - {{rankingItem.score}} points
             </ion-item>
         </ion-list>

@@ -2,12 +2,29 @@
 body {
 }
 
+.platform-android .bar .title {
+    text-align: center;
+}
+
 .icon span {
     margin-left: 20px;
 }
 
 .scroll-padding {
     height: 100%;
+}
+
+.no-content-message {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.no-content-message img {
+    margin-bottom: 20px;
+}
+
+.noPanel {
 }
 
 /*RANKING*/
@@ -18,6 +35,9 @@ body {
 }
 
 /*RACE*/
+.race {
+    margin-top: 30px;
+}
 .moving-div {
     width: 100px;
     position: absolute;
@@ -96,6 +116,12 @@ body {
 
 .whatsapp-icon {
     color: #27A853;
+}
+
+/*POPUP GAME OVER*/
+.error {
+    color: red;
+    text-align: center;
 }
 
 /*TUTORIAL*/

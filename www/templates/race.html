@@ -1,9 +1,10 @@
-<ion-view title="Race">
+<ion-view title="">
     <ion-content padding="true" class="has-header race" ng-click="updateCount()">
         <h1>{{countdown}}</h1>
+
         <h1 class="count">{{count}}</h1>
         <!--<div class='moving-div' ng-style='pos' ng-click="updateCount()"></div>-->
-        <img class="moving-div" ng-style="pos" ng-click="updateFish()" ng-mouseup="fishBack()" src="{{fish}}"/>
+        <!--<img class="moving-div" ng-style="pos" ng-click="updateFish()" ng-mouseup="fishBack()" src="{{fish}}"/>-->
         <h1 ng-show="countdown <= 0">Finish!!!</h1>
     </ion-content>
 </ion-view>

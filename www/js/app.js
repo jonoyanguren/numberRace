@@ -6,7 +6,19 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular
-    .module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 'firebase'])
+    .module('app', [
+        'ionic',
+        'app.routes',
+        'app.services',
+        'app.directives',
+        'firebase',
+        'backand'
+    ])
+    .config(function (BackandProvider) {
+        BackandProvider.setAppName('fingerbreaker');
+        BackandProvider.setSignUpToken('735f7946-330a-4c2e-93d2-c25c09619068');
+        BackandProvider.setAnonymousToken('0cf3c531-c55b-4632-be8d-24967c8c708e');
+    })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

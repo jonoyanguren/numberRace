@@ -1,10 +1,17 @@
 (function () {
     angular.module('app')
-        .controller('gameOverCtrl', function ($scope, $stateParams, $ionicActionSheet, $state, $ionicPopup) {
+        .controller('gameOverCtrl', function ($scope,
+                                              $stateParams,
+                                              $ionicActionSheet,
+                                              $state,
+                                              $ionicPopup,
+                                              dataService) {
             $scope.points = $stateParams.points;
             $scope.time = $stateParams.time;
             $scope.popup = {};
             $scope.rankingUploaded = false;
+            $scope.notNick = false;
+            $scope.notEmail = false;
 
             var levelNames = ["FingerZombie", "FingerBaby", "FingerJumper", "FingerDance", "FingerBreaker"];
 
@@ -36,8 +43,6 @@
                     ],
                     titleText: 'Menu',
                     cancel: function () {
-                        // add cancel code..
-                        console.log("cancel");
                     },
                     buttonClicked: function (index) {
                         switch (index) {
@@ -75,12 +80,17 @@
 
             $scope.showPopup = function () {
                 $scope.data = {}
+                $scope.rankingUploaded = true;
 
                 // An elaborate, custom popup
                 var myPopup = $ionicPopup.show({
                     template: '' +
-                    '<input type="text" ng-model="data.nick" placeholder="nick">' +
-                    '<input type="email" ng-model="data.email" placeholder="email">',
+                    '<form name="sendDataForm">' +
+                    '<input type="text" ng-model="data.nick" placeholder="nick"><br/>' +
+                    '<p ng-if="notNick" class="error">Please enter a nick</p><br/>' +
+                    '<input type="email" name="email" ng-model="data.email" placeholder="Enter a valid email"><br/>' +
+                    '<p ng-if="notEmail" class="error">Please enter a valid email</p>' +
+                    '</form>',
                     title: 'Enter your nick and mail',
                     subTitle: 'we will not spam you, promise',
                     scope: $scope,
@@ -90,8 +100,12 @@
                             text: '<b>Send</b>',
                             type: 'button-positive',
                             onTap: function (e) {
-                                if (!$scope.data.nick || !$scope.data.email) {
-                                    //don't allow the user to close unless he enters wifi password
+                                if (!$scope.data.nick) {
+                                    $scope.notNick = true;
+                                    e.preventDefault();
+                                } else if (!$scope.data.email || sendDataForm.email.$error) {
+                                    $scope.notEmail = true;
+                                    $scope.notNick = false;
                                     e.preventDefault();
                                 } else {
                                     var userObject = {
@@ -106,8 +120,25 @@
                     ]
                 });
                 myPopup.then(function (res) {
-                    addUserToFirebase(res);
+                    addUser(res);
+                    //addUserToFirebase(res);
                 });
+            };
+
+            var addUser = function (user) {
+                dataService.postRanking($scope.time, user)
+                    .success(function (result) {
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Complete!!',
+                            template: 'Thank you, now score is now in the world ranking!!'
+                        });
+                        alertPopup.then(function (res) {
+                            $state.go('start');
+                        });
+                    })
+                    .error(function (result) {
+                        alert("something whent wrong");
+                    })
             };
 
             var addUserToFirebase = function (user) {
@@ -115,9 +146,10 @@
                 url += $scope.time + 'ranking';
                 var ranking = new Firebase(url);
 
-                ranking.push(user, function(error) {
-                    if(error){
+                ranking.push(user, function (error) {
+                    if (error) {
                         alert("something happened");
+                        $scope.rankingUploaded = false;
                     } else {
                         alert("Data stored");
                         $scope.rankingUploaded = true;
@@ -125,6 +157,5 @@
                 });
             }
         });
-})
-();
+})();
 

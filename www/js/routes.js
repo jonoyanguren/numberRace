@@ -52,10 +52,18 @@ angular.module('app.routes', [])
                 templateUrl: 'templates/tutorial.html',
                 cache: false
             })
+            .state('selectRanking', {
+                url: '/selectRanking',
+                templateUrl: 'templates/selectRanking.html',
+                cache: false
+            })
             .state('ranking', {
                 url: '/ranking',
                 templateUrl: 'templates/ranking.html',
                 controller: 'rankingCtrl',
+                params: {
+                    type: "20"
+                },
                 cache: false
             });
 
