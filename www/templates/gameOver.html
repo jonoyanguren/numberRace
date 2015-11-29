@@ -1,22 +1,20 @@
-<ion-view title="" class="noPanel">
-    <ion-content padding="true" class="has-header game-over">
-        <img class="game-over-title" src="img/gameOver.png"/>
+<ion-content padding="true" class="has-header game-over">
+    <img class="game-over-title" src="img/gameOver.png"/>
 
-        <div class="info-points">
-            <p>{{points}} points!</p>
+    <div class="info-points">
+        <p>{{points}} points!</p>
 
-            <p>You are a {{rank}}!!!</p>
-        </div>
-        <div class="buttons">
-            <button class="button button-balanced" ng-click="retry()">
-                <i class="icon ion-planet"></i><span>Retry</span>
-            </button>
-            <button class="button button-energized" ng-click="showPopup()" ng-disabled="rankingUploaded">
-                <i class="icon ion-upload"></i><span>World ranking</span>
-            </button>
-            <button class="button button-royal" ng-click="showActionSheet()">
-                <i class="icon ion-android-share-alt"></i><span>Share</span>
-            </button>
-        </div>
-    </ion-content>
-</ion-view>
+        <p>You are a {{rank}}!!!</p>
+    </div>
+    <div class="buttons">
+        <button class="button button-balanced" ng-click="retry()">
+            <i class="icon ion-planet"></i><span>Retry</span>
+        </button>
+        <button class="button button-energized" ng-click="showPopup()" ng-disabled="rankingUploaded">
+            <i class="icon ion-upload"></i><span>World ranking</span>
+        </button>
+        <button class="button button-royal" ng-click="showActionSheet()">
+            <i class="icon ion-android-share-alt"></i><span>Share</span>
+        </button>
+    </div>
+</ion-content>

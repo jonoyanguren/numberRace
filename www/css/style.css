@@ -49,7 +49,7 @@ body {
 /*LOADING*/
 .loading {
     text-align: center;
-    margin-top: 35%;
+    padding-top: 35%;
 }
 
 .loading h3 {

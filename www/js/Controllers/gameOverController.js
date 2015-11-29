@@ -88,8 +88,6 @@
                     '<form name="sendDataForm">' +
                     '<input type="text" ng-model="data.nick" placeholder="nick"><br/>' +
                     '<p ng-if="notNick" class="error">Please enter a nick</p><br/>' +
-                    '<input type="email" name="email" ng-model="data.email" placeholder="Enter a valid email"><br/>' +
-                    '<p ng-if="notEmail" class="error">Please enter a valid email</p>' +
                     '</form>',
                     title: 'Enter your nick and mail',
                     subTitle: 'we will not spam you, promise',
@@ -103,14 +101,10 @@
                                 if (!$scope.data.nick) {
                                     $scope.notNick = true;
                                     e.preventDefault();
-                                } else if (!$scope.data.email || sendDataForm.email.$error) {
-                                    $scope.notEmail = true;
-                                    $scope.notNick = false;
-                                    e.preventDefault();
                                 } else {
                                     var userObject = {
                                         nick: $scope.data.nick,
-                                        email: $scope.data.email,
+                                        email: '',
                                         score: $scope.points
                                     }
                                     return userObject;

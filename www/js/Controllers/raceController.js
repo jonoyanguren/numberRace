@@ -11,29 +11,31 @@
             };
 
             var finishAudio = new Audio('audio/finish.mp3');
+            var clickAudio = new Audio('audio/click.mp3');
 
-            $scope.updateCount = function() {
-                if($scope.countdown > 0)
+            $scope.updateCount = function () {
+                if ($scope.countdown > 0)
                     $scope.count++;
+                    //clickAudio.play();
             };
 
-            $scope.updateFish = function() {
+            $scope.updateFish = function () {
                 $scope.fish = "img/fishTap.png";
                 $scope.updateCount();
             };
 
-            $scope.fishBack = function() {
+            $scope.fishBack = function () {
                 $scope.fish = "img/fish.png";
             }
 
-            var timer = $interval(function() {
+            var timer = $interval(function () {
                 $scope.countdown--;
 
-                if($scope.countdown <= 0) {
+                if ($scope.countdown <= 0) {
                     finishAudio.play();
                     $interval.cancel(timer);
 
-                    $timeout(function() {
+                    $timeout(function () {
                         $state.go('gameOver', {
                             points: $scope.count,
                             time: $stateParams.time
@@ -42,7 +44,7 @@
                 }
             }, 1000);
 
-            $scope.newPos = function() {
+            $scope.newPos = function () {
                 // calculate however you'd like:
                 $scope.pos.top = Math.random() * 400 + "px";
                 $scope.pos.left = Math.random() * 500 + "px";
